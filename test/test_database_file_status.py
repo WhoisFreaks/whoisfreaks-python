@@ -41,6 +41,7 @@ class TestDatabaseFileStatus(unittest.TestCase):
                 cleaned_expired = { },
                 dropped = { },
                 dropped_with_backlinks = { },
+                threat_feed = { },
                 database_updates = { }
             )
         else:

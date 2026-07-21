@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **cleaned_expired** | [**DateRangeStatus**](DateRangeStatus.md) |  | [optional] 
 **dropped** | [**DateRangeStatus**](DateRangeStatus.md) |  | [optional] 
 **dropped_with_backlinks** | [**DateRangeStatus**](DateRangeStatus.md) |  | [optional] 
+**threat_feed** | [**ThreatFeedStatus**](ThreatFeedStatus.md) |  | [optional] 
 **database_updates** | [**DatabaseUpdates**](DatabaseUpdates.md) |  | [optional] 
 
 ## Example

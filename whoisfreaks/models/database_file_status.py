@@ -23,6 +23,7 @@ from typing import Any, ClassVar, Dict, List, Optional
 from whoisfreaks.models.database_updates import DatabaseUpdates
 from whoisfreaks.models.date_range_status import DateRangeStatus
 from whoisfreaks.models.newly_status import NewlyStatus
+from whoisfreaks.models.threat_feed_status import ThreatFeedStatus
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -35,9 +36,10 @@ class DatabaseFileStatus(BaseModel):
     cleaned_expired: Optional[DateRangeStatus] = None
     dropped: Optional[DateRangeStatus] = None
     dropped_with_backlinks: Optional[DateRangeStatus] = None
+    threat_feed: Optional[ThreatFeedStatus] = None
     database_updates: Optional[DatabaseUpdates] = None
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["newly", "expired", "cleaned_expired", "dropped", "dropped_with_backlinks", "database_updates"]
+    __properties: ClassVar[List[str]] = ["newly", "expired", "cleaned_expired", "dropped", "dropped_with_backlinks", "threat_feed", "database_updates"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -95,6 +97,9 @@ class DatabaseFileStatus(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of dropped_with_backlinks
         if self.dropped_with_backlinks:
             _dict['dropped_with_backlinks'] = self.dropped_with_backlinks.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of threat_feed
+        if self.threat_feed:
+            _dict['threat_feed'] = self.threat_feed.to_dict()
         # override the default output from pydantic by calling `to_dict()` of database_updates
         if self.database_updates:
             _dict['database_updates'] = self.database_updates.to_dict()
@@ -120,6 +125,7 @@ class DatabaseFileStatus(BaseModel):
             "cleaned_expired": DateRangeStatus.from_dict(obj["cleaned_expired"]) if obj.get("cleaned_expired") is not None else None,
             "dropped": DateRangeStatus.from_dict(obj["dropped"]) if obj.get("dropped") is not None else None,
             "dropped_with_backlinks": DateRangeStatus.from_dict(obj["dropped_with_backlinks"]) if obj.get("dropped_with_backlinks") is not None else None,
+            "threat_feed": ThreatFeedStatus.from_dict(obj["threat_feed"]) if obj.get("threat_feed") is not None else None,
             "database_updates": DatabaseUpdates.from_dict(obj["database_updates"]) if obj.get("database_updates") is not None else None
         })
         # store additional fields in additional_properties

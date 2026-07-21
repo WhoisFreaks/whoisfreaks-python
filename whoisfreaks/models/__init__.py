@@ -84,6 +84,7 @@ from whoisfreaks.models.ssl_response import SslResponse
 from whoisfreaks.models.ssl_unit_info import SslUnitInfo
 from whoisfreaks.models.subdomain import Subdomain
 from whoisfreaks.models.subdomains_response import SubdomainsResponse
+from whoisfreaks.models.threat_feed_status import ThreatFeedStatus
 from whoisfreaks.models.threat_source import ThreatSource
 from whoisfreaks.models.trust_signals import TrustSignals
 from whoisfreaks.models.typosquatting_domain import TyposquattingDomain

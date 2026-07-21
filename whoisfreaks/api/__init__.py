@@ -12,6 +12,7 @@ from whoisfreaks.api.databases_ip_security_api import DatabasesIPSecurityApi
 from whoisfreaks.api.databases_ipwhois_api import DatabasesIPWHOISApi
 from whoisfreaks.api.databases_newly_registered_api import DatabasesNewlyRegisteredApi
 from whoisfreaks.api.databases_subdomains_api import DatabasesSubdomainsApi
+from whoisfreaks.api.databases_threat_feed_api import DatabasesThreatFeedApi
 from whoisfreaks.api.databases_whois_api import DatabasesWHOISApi
 from whoisfreaks.api.domain_availability_api import DomainAvailabilityApi
 from whoisfreaks.api.domain_reputation_api import DomainReputationApi

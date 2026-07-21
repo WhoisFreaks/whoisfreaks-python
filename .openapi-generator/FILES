@@ -32,6 +32,7 @@ docs/DatabasesIPSecurityApi.md
 docs/DatabasesIPWHOISApi.md
 docs/DatabasesNewlyRegisteredApi.md
 docs/DatabasesSubdomainsApi.md
+docs/DatabasesThreatFeedApi.md
 docs/DatabasesWHOISApi.md
 docs/DateRangeStatus.md
 docs/DgaFeatures.md
@@ -92,6 +93,7 @@ docs/SslUnitInfo.md
 docs/Subdomain.md
 docs/SubdomainsApi.md
 docs/SubdomainsResponse.md
+docs/ThreatFeedStatus.md
 docs/ThreatSource.md
 docs/TrustSignals.md
 docs/TyposquattingApi.md
@@ -139,6 +141,7 @@ test/test_databases_ip_security_api.py
 test/test_databases_ipwhois_api.py
 test/test_databases_newly_registered_api.py
 test/test_databases_subdomains_api.py
+test/test_databases_threat_feed_api.py
 test/test_databases_whois_api.py
 test/test_date_range_status.py
 test/test_dga_features.py
@@ -200,6 +203,7 @@ test/test_ssl_unit_info.py
 test/test_subdomain.py
 test/test_subdomains_api.py
 test/test_subdomains_response.py
+test/test_threat_feed_status.py
 test/test_threat_source.py
 test/test_trust_signals.py
 test/test_typosquatting_api.py
@@ -226,6 +230,7 @@ whoisfreaks/api/databases_ip_security_api.py
 whoisfreaks/api/databases_ipwhois_api.py
 whoisfreaks/api/databases_newly_registered_api.py
 whoisfreaks/api/databases_subdomains_api.py
+whoisfreaks/api/databases_threat_feed_api.py
 whoisfreaks/api/databases_whois_api.py
 whoisfreaks/api/dns_api.py
 whoisfreaks/api/domain_availability_api.py
@@ -311,6 +316,7 @@ whoisfreaks/models/ssl_response.py
 whoisfreaks/models/ssl_unit_info.py
 whoisfreaks/models/subdomain.py
 whoisfreaks/models/subdomains_response.py
+whoisfreaks/models/threat_feed_status.py
 whoisfreaks/models/threat_source.py
 whoisfreaks/models/trust_signals.py
 whoisfreaks/models/typosquatting_domain.py

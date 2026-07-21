@@ -15,7 +15,7 @@
 """  # noqa: E501
 
 
-__version__ = "0.20.0"
+__version__ = "0.21.0"
 
 # import apis into sdk package
 from whoisfreaks.api.asnwhois_api import ASNWHOISApi
@@ -29,6 +29,7 @@ from whoisfreaks.api.databases_ip_security_api import DatabasesIPSecurityApi
 from whoisfreaks.api.databases_ipwhois_api import DatabasesIPWHOISApi
 from whoisfreaks.api.databases_newly_registered_api import DatabasesNewlyRegisteredApi
 from whoisfreaks.api.databases_subdomains_api import DatabasesSubdomainsApi
+from whoisfreaks.api.databases_threat_feed_api import DatabasesThreatFeedApi
 from whoisfreaks.api.databases_whois_api import DatabasesWHOISApi
 from whoisfreaks.api.domain_availability_api import DomainAvailabilityApi
 from whoisfreaks.api.domain_reputation_api import DomainReputationApi
@@ -121,6 +122,7 @@ from whoisfreaks.models.ssl_response import SslResponse
 from whoisfreaks.models.ssl_unit_info import SslUnitInfo
 from whoisfreaks.models.subdomain import Subdomain
 from whoisfreaks.models.subdomains_response import SubdomainsResponse
+from whoisfreaks.models.threat_feed_status import ThreatFeedStatus
 from whoisfreaks.models.threat_source import ThreatSource
 from whoisfreaks.models.trust_signals import TrustSignals
 from whoisfreaks.models.typosquatting_domain import TyposquattingDomain
