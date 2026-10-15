@@ -3,7 +3,7 @@
 """
     WhoisFreaks API
 
-    Complete WhoisFreaks API — WHOIS, DNS, SSL, Geolocation, Typosquatting, IP Intelligence, Domain Reputation, and bulk database downloads.  ## Authentication All requests require an `apiKey` query parameter.  ## Resources - Docs: https://whoisfreaks.com/documentation - Billing: https://billing.whoisfreaks.com - Support: support@whoisfreaks.com 
+    Complete WhoisFreaks API: WHOIS, DNS, SSL, Geolocation, Typosquatting, IP Intelligence, Domain Reputation, and bulk database downloads.  ## Authentication All requests require an `apiKey` query parameter.  ## Resources - Docs: https://whoisfreaks.com/documentation - Billing: https://billing.whoisfreaks.com - Support: support@whoisfreaks.com 
 
     The version of the OpenAPI document: 1.0.0
     Contact: support@whoisfreaks.com
@@ -38,7 +38,31 @@ class TestBulkWhoisItem(unittest.TestCase):
             return BulkWhoisItem(
                 status = True,
                 domain_name = '',
-                error = ''
+                error = '',
+                query_time = '',
+                whois_server = '',
+                domain_registered = '',
+                secure_dns = True,
+                domain_handle = '',
+                create_date = '',
+                update_date = '',
+                expiry_date = '',
+                domain_registrar = { },
+                reseller_contact = { },
+                registrant_contact = { },
+                administrative_contact = { },
+                technical_contact = { },
+                billing_contact = { },
+                eligibility_info = { },
+                abuse_contact = { },
+                name_servers = [
+                    ''
+                    ],
+                domain_status = [
+                    ''
+                    ],
+                whois_raw_domain = '',
+                registry_data = { }
             )
         else:
             return BulkWhoisItem(

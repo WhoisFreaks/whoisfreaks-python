@@ -3,7 +3,7 @@
 """
     WhoisFreaks API
 
-    Complete WhoisFreaks API — WHOIS, DNS, SSL, Geolocation, Typosquatting, IP Intelligence, Domain Reputation, and bulk database downloads.  ## Authentication All requests require an `apiKey` query parameter.  ## Resources - Docs: https://whoisfreaks.com/documentation - Billing: https://billing.whoisfreaks.com - Support: support@whoisfreaks.com 
+    Complete WhoisFreaks API: WHOIS, DNS, SSL, Geolocation, Typosquatting, IP Intelligence, Domain Reputation, and bulk database downloads.  ## Authentication All requests require an `apiKey` query parameter.  ## Resources - Docs: https://whoisfreaks.com/documentation - Billing: https://billing.whoisfreaks.com - Support: support@whoisfreaks.com 
 
     The version of the OpenAPI document: 1.0.0
     Contact: support@whoisfreaks.com
@@ -28,8 +28,8 @@ class BulkDomainAvailabilityRequest(BaseModel):
     """
     Request body for POST /v2.0/domain/availability. Use domainNames OR tld.
     """ # noqa: E501
-    domain_names: Optional[Annotated[List[StrictStr], Field(max_length=100)]] = Field(default=None, description="Mode 1 — list of full domain names. Cannot be used with tld.", alias="domainNames")
-    tld: Optional[Annotated[List[StrictStr], Field(max_length=100)]] = Field(default=None, description="Mode 2 — TLDs to check against the domain query param. Cannot be used with domainNames.")
+    domain_names: Optional[Annotated[List[StrictStr], Field(max_length=100)]] = Field(default=None, description="Mode 1: list of full domain names. Cannot be used with tld.", alias="domainNames")
+    tld: Optional[Annotated[List[StrictStr], Field(max_length=100)]] = Field(default=None, description="Mode 2: TLDs to check against the domain query param. Cannot be used with domainNames.")
     additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["domainNames", "tld"]
 

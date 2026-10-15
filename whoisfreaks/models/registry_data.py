@@ -3,7 +3,7 @@
 """
     WhoisFreaks API
 
-    Complete WhoisFreaks API — WHOIS, DNS, SSL, Geolocation, Typosquatting, IP Intelligence, Domain Reputation, and bulk database downloads.  ## Authentication All requests require an `apiKey` query parameter.  ## Resources - Docs: https://whoisfreaks.com/documentation - Billing: https://billing.whoisfreaks.com - Support: support@whoisfreaks.com 
+    Complete WhoisFreaks API: WHOIS, DNS, SSL, Geolocation, Typosquatting, IP Intelligence, Domain Reputation, and bulk database downloads.  ## Authentication All requests require an `apiKey` query parameter.  ## Resources - Docs: https://whoisfreaks.com/documentation - Billing: https://billing.whoisfreaks.com - Support: support@whoisfreaks.com 
 
     The version of the OpenAPI document: 1.0.0
     Contact: support@whoisfreaks.com
@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from whoisfreaks.models.registrar_information import RegistrarInformation
 from typing import Optional, Set
@@ -38,9 +38,9 @@ class RegistryData(BaseModel):
     domain_registrar: Optional[RegistrarInformation] = None
     name_servers: Optional[List[StrictStr]] = None
     domain_status: Optional[List[StrictStr]] = None
-    whois_raw_domain: Optional[StrictStr] = None
+    whois_raw_registery: Optional[StrictStr] = Field(default=None, description="Raw registry WHOIS text (field name spelled as the API returns it)")
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["domain_name", "query_time", "whois_server", "domain_registered", "create_date", "update_date", "expiry_date", "domain_registrar", "name_servers", "domain_status", "whois_raw_domain"]
+    __properties: ClassVar[List[str]] = ["domain_name", "query_time", "whois_server", "domain_registered", "create_date", "update_date", "expiry_date", "domain_registrar", "name_servers", "domain_status", "whois_raw_registery"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -113,7 +113,7 @@ class RegistryData(BaseModel):
             "domain_registrar": RegistrarInformation.from_dict(obj["domain_registrar"]) if obj.get("domain_registrar") is not None else None,
             "name_servers": obj.get("name_servers"),
             "domain_status": obj.get("domain_status"),
-            "whois_raw_domain": obj.get("whois_raw_domain")
+            "whois_raw_registery": obj.get("whois_raw_registery")
         })
         # store additional fields in additional_properties
         for _key in obj.keys():

@@ -45,7 +45,7 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 with whoisfreaks.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = whoisfreaks.SSLApi(api_client)
-    domain_name = 'domain_name_example' # str | 
+    domain_name = 'whoisfreaks.com' # str | 
     chain = False # bool |  (optional) (default to False)
     ssl_raw = False # bool |  (optional) (default to False)
     format = json # str |  (optional) (default to json)

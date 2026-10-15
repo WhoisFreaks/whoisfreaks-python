@@ -3,7 +3,7 @@
 """
     WhoisFreaks API
 
-    Complete WhoisFreaks API — WHOIS, DNS, SSL, Geolocation, Typosquatting, IP Intelligence, Domain Reputation, and bulk database downloads.  ## Authentication All requests require an `apiKey` query parameter.  ## Resources - Docs: https://whoisfreaks.com/documentation - Billing: https://billing.whoisfreaks.com - Support: support@whoisfreaks.com 
+    Complete WhoisFreaks API: WHOIS, DNS, SSL, Geolocation, Typosquatting, IP Intelligence, Domain Reputation, and bulk database downloads.  ## Authentication All requests require an `apiKey` query parameter.  ## Resources - Docs: https://whoisfreaks.com/documentation - Billing: https://billing.whoisfreaks.com - Support: support@whoisfreaks.com 
 
     The version of the OpenAPI document: 1.0.0
     Contact: support@whoisfreaks.com
@@ -525,7 +525,7 @@ conf = whoisfreaks.Configuration(
                "OS: {env}\n"\
                "Python Version: {pyversion}\n"\
                "Version of the API: 1.0.0\n"\
-               "SDK Package Version: 0.21.0".\
+               "SDK Package Version: 0.23.2".\
                format(env=sys.platform, pyversion=sys.version)
 
     def get_host_settings(self) -> List[HostSetting]:

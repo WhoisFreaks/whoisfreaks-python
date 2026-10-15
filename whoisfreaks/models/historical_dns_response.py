@@ -3,7 +3,7 @@
 """
     WhoisFreaks API
 
-    Complete WhoisFreaks API — WHOIS, DNS, SSL, Geolocation, Typosquatting, IP Intelligence, Domain Reputation, and bulk database downloads.  ## Authentication All requests require an `apiKey` query parameter.  ## Resources - Docs: https://whoisfreaks.com/documentation - Billing: https://billing.whoisfreaks.com - Support: support@whoisfreaks.com 
+    Complete WhoisFreaks API: WHOIS, DNS, SSL, Geolocation, Typosquatting, IP Intelligence, Domain Reputation, and bulk database downloads.  ## Authentication All requests require an `apiKey` query parameter.  ## Resources - Docs: https://whoisfreaks.com/documentation - Billing: https://billing.whoisfreaks.com - Support: support@whoisfreaks.com 
 
     The version of the OpenAPI document: 1.0.0
     Contact: support@whoisfreaks.com
@@ -26,14 +26,14 @@ from typing_extensions import Self
 
 class HistoricalDnsResponse(BaseModel):
     """
-    Note: 'currenPage' spelling matches the API.
+    HistoricalDnsResponse
     """ # noqa: E501
     total_pages: Optional[StrictInt] = Field(default=None, alias="totalPages")
-    curren_page: Optional[StrictInt] = Field(default=None, alias="currenPage")
+    current_page: Optional[StrictInt] = Field(default=None, alias="currentPage")
     total_records: Optional[StrictInt] = Field(default=None, alias="totalRecords")
-    historical_dns: Optional[List[DnsResponse]] = Field(default=None, alias="historicalDns")
+    historical_dns_records: Optional[List[DnsResponse]] = Field(default=None, alias="historicalDnsRecords")
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["totalPages", "currenPage", "totalRecords", "historicalDns"]
+    __properties: ClassVar[List[str]] = ["totalPages", "currentPage", "totalRecords", "historicalDnsRecords"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -76,13 +76,13 @@ class HistoricalDnsResponse(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of each item in historical_dns (list)
+        # override the default output from pydantic by calling `to_dict()` of each item in historical_dns_records (list)
         _items = []
-        if self.historical_dns:
-            for _item_historical_dns in self.historical_dns:
-                if _item_historical_dns:
-                    _items.append(_item_historical_dns.to_dict())
-            _dict['historicalDns'] = _items
+        if self.historical_dns_records:
+            for _item_historical_dns_records in self.historical_dns_records:
+                if _item_historical_dns_records:
+                    _items.append(_item_historical_dns_records.to_dict())
+            _dict['historicalDnsRecords'] = _items
         # puts key-value pairs in additional_properties in the top level
         if self.additional_properties is not None:
             for _key, _value in self.additional_properties.items():
@@ -101,9 +101,9 @@ class HistoricalDnsResponse(BaseModel):
 
         _obj = cls.model_validate({
             "totalPages": obj.get("totalPages"),
-            "currenPage": obj.get("currenPage"),
+            "currentPage": obj.get("currentPage"),
             "totalRecords": obj.get("totalRecords"),
-            "historicalDns": [DnsResponse.from_dict(_item) for _item in obj["historicalDns"]] if obj.get("historicalDns") is not None else None
+            "historicalDnsRecords": [DnsResponse.from_dict(_item) for _item in obj["historicalDnsRecords"]] if obj.get("historicalDnsRecords") is not None else None
         })
         # store additional fields in additional_properties
         for _key in obj.keys():

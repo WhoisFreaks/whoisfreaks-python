@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 **domain_registrar** | [**RegistrarInformation**](RegistrarInformation.md) |  | [optional] 
 **name_servers** | **List[str]** |  | [optional] 
 **domain_status** | **List[str]** |  | [optional] 
-**whois_raw_domain** | **str** |  | [optional] 
+**whois_raw_registery** | **str** | Raw registry WHOIS text (field name spelled as the API returns it) | [optional] 
 
 ## Example
 

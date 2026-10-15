@@ -1,24 +1,26 @@
 [tool.poetry]
 name = "whoisfreaks"
-version = "0.21.0"
-description = "WhoisFreaks API"
+version = "0.23.2"
+description = "Python WHOIS API client: live, historical, reverse and bulk WHOIS, plus DNS, domain availability and typosquatting"
 authors = ["WhoisFreaks Support <support@whoisfreaks.com>"]
 license = "MIT"
 readme = "README.md"
-repository = "https://github.com/GIT_USER_ID/GIT_REPO_ID"
-keywords = ["OpenAPI", "OpenAPI-Generator", "WhoisFreaks API"]
+repository = "https://github.com/WhoisFreaks/whoisfreaks-python"
+homepage = "https://whoisfreaks.com/products/whois-api"
+documentation = "https://whoisfreaks.com/documentation/whois-api"
+keywords = ["whois", "whois api", "python whois", "rdap", "reverse whois", "whois history", "bulk whois", "dns lookup", "domain availability", "typosquatting"]
 include = ["whoisfreaks/py.typed"]
 
 [tool.poetry.dependencies]
 python = "^3.8"
 
-urllib3 = ">= 1.25.3, < 3.0.0"
+urllib3 = ">=2.5.0, < 3.0.0"
 python-dateutil = ">= 2.8.2"
 pydantic = ">= 2"
 typing-extensions = ">= 4.7.1"
 
 [tool.poetry.dev-dependencies]
-pytest = ">= 7.2.1"
+pytest = ">=9.0.3"
 pytest-cov = ">= 2.8.1"
 tox = ">= 3.9.0"
 flake8 = ">= 4.0.0"

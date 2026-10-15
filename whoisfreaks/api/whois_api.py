@@ -3,7 +3,7 @@
 """
     WhoisFreaks API
 
-    Complete WhoisFreaks API — WHOIS, DNS, SSL, Geolocation, Typosquatting, IP Intelligence, Domain Reputation, and bulk database downloads.  ## Authentication All requests require an `apiKey` query parameter.  ## Resources - Docs: https://whoisfreaks.com/documentation - Billing: https://billing.whoisfreaks.com - Support: support@whoisfreaks.com 
+    Complete WhoisFreaks API: WHOIS, DNS, SSL, Geolocation, Typosquatting, IP Intelligence, Domain Reputation, and bulk database downloads.  ## Authentication All requests require an `apiKey` query parameter.  ## Resources - Docs: https://whoisfreaks.com/documentation - Billing: https://billing.whoisfreaks.com - Support: support@whoisfreaks.com 
 
     The version of the OpenAPI document: 1.0.0
     Contact: support@whoisfreaks.com
@@ -342,7 +342,6 @@ class WHOISApi:
     def whois_history(
         self,
         domain_name: Annotated[StrictStr, Field(description="Domain to fetch historical WHOIS records for")],
-        page: Annotated[Optional[StrictInt], Field(description="Page number")] = None,
         format: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
@@ -359,11 +358,10 @@ class WHOISApi:
     ) -> WhoisHistoricalResponse:
         """Historical WHOIS records for a domain
 
+        Every WHOIS record captured for the domain since 1986, in one response (no pagination). Cost 2 credits.
 
         :param domain_name: Domain to fetch historical WHOIS records for (required)
         :type domain_name: str
-        :param page: Page number
-        :type page: int
         :param format:
         :type format: str
         :param _request_timeout: timeout setting for this request. If one
@@ -390,7 +388,6 @@ class WHOISApi:
 
         _param = self._whois_history_serialize(
             domain_name=domain_name,
-            page=page,
             format=format,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -416,7 +413,6 @@ class WHOISApi:
     def whois_history_with_http_info(
         self,
         domain_name: Annotated[StrictStr, Field(description="Domain to fetch historical WHOIS records for")],
-        page: Annotated[Optional[StrictInt], Field(description="Page number")] = None,
         format: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
@@ -433,11 +429,10 @@ class WHOISApi:
     ) -> ApiResponse[WhoisHistoricalResponse]:
         """Historical WHOIS records for a domain
 
+        Every WHOIS record captured for the domain since 1986, in one response (no pagination). Cost 2 credits.
 
         :param domain_name: Domain to fetch historical WHOIS records for (required)
         :type domain_name: str
-        :param page: Page number
-        :type page: int
         :param format:
         :type format: str
         :param _request_timeout: timeout setting for this request. If one
@@ -464,7 +459,6 @@ class WHOISApi:
 
         _param = self._whois_history_serialize(
             domain_name=domain_name,
-            page=page,
             format=format,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -490,7 +484,6 @@ class WHOISApi:
     def whois_history_without_preload_content(
         self,
         domain_name: Annotated[StrictStr, Field(description="Domain to fetch historical WHOIS records for")],
-        page: Annotated[Optional[StrictInt], Field(description="Page number")] = None,
         format: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
@@ -507,11 +500,10 @@ class WHOISApi:
     ) -> RESTResponseType:
         """Historical WHOIS records for a domain
 
+        Every WHOIS record captured for the domain since 1986, in one response (no pagination). Cost 2 credits.
 
         :param domain_name: Domain to fetch historical WHOIS records for (required)
         :type domain_name: str
-        :param page: Page number
-        :type page: int
         :param format:
         :type format: str
         :param _request_timeout: timeout setting for this request. If one
@@ -538,7 +530,6 @@ class WHOISApi:
 
         _param = self._whois_history_serialize(
             domain_name=domain_name,
-            page=page,
             format=format,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -559,7 +550,6 @@ class WHOISApi:
     def _whois_history_serialize(
         self,
         domain_name,
-        page,
         format,
         _request_auth,
         _content_type,
@@ -586,10 +576,6 @@ class WHOISApi:
         if domain_name is not None:
             
             _query_params.append(('domainName', domain_name))
-            
-        if page is not None:
-            
-            _query_params.append(('page', page))
             
         if format is not None:
             

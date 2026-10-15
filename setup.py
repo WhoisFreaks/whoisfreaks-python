@@ -3,7 +3,7 @@
 """
     WhoisFreaks API
 
-    Complete WhoisFreaks API — WHOIS, DNS, SSL, Geolocation, Typosquatting, IP Intelligence, Domain Reputation, and bulk database downloads.  ## Authentication All requests require an `apiKey` query parameter.  ## Resources - Docs: https://whoisfreaks.com/documentation - Billing: https://billing.whoisfreaks.com - Support: support@whoisfreaks.com 
+    Complete WhoisFreaks API: WHOIS, DNS, SSL, Geolocation, Typosquatting, IP Intelligence, Domain Reputation, and bulk database downloads.  ## Authentication All requests require an `apiKey` query parameter.  ## Resources - Docs: https://whoisfreaks.com/documentation - Billing: https://billing.whoisfreaks.com - Support: support@whoisfreaks.com 
 
     The version of the OpenAPI document: 1.0.0
     Contact: support@whoisfreaks.com
@@ -12,6 +12,8 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
+import pathlib
 
 from setuptools import setup, find_packages  # noqa: H301
 
@@ -22,10 +24,10 @@ from setuptools import setup, find_packages  # noqa: H301
 # prerequisite: setuptools
 # http://pypi.python.org/pypi/setuptools
 NAME = "whoisfreaks"
-VERSION = "0.21.0"
+VERSION = "0.23.2"
 PYTHON_REQUIRES = ">= 3.8"
 REQUIRES = [
-    "urllib3 >= 1.25.3, < 3.0.0",
+    "urllib3>=2.5.0, < 3.0.0",
     "python-dateutil >= 2.8.2",
     "pydantic >= 2",
     "typing-extensions >= 4.7.1",
@@ -34,18 +36,30 @@ REQUIRES = [
 setup(
     name=NAME,
     version=VERSION,
-    description="WhoisFreaks API",
+    description="Python WHOIS API client: live, historical, reverse and bulk WHOIS, plus DNS, domain availability and typosquatting",
     author="WhoisFreaks Support",
     author_email="support@whoisfreaks.com",
-    url="",
-    keywords=["OpenAPI", "OpenAPI-Generator", "WhoisFreaks API"],
+    url="https://github.com/WhoisFreaks/whoisfreaks-python",
+    project_urls={
+        "Homepage": "https://whoisfreaks.com/products/whois-api",
+        "Documentation": "https://whoisfreaks.com/documentation/whois-api",
+        "Source": "https://github.com/WhoisFreaks/whoisfreaks-python",
+        "Status": "https://status.whois.whoisfreaks.com/",
+    },
+    keywords=["whois", "whois api", "python whois", "rdap", "reverse whois", "whois history", "bulk whois", "dns lookup", "domain availability", "typosquatting"],
     install_requires=REQUIRES,
+    python_requires=PYTHON_REQUIRES,
+    classifiers=[
+        "Programming Language :: Python :: 3",
+        "License :: OSI Approved :: MIT License",
+        "Topic :: Internet :: Name Service (DNS)",
+        "Topic :: Security",
+        "Intended Audience :: Developers",
+    ],
     packages=find_packages(exclude=["test", "tests"]),
     include_package_data=True,
     license="MIT",
     long_description_content_type='text/markdown',
-    long_description="""\
-    Complete WhoisFreaks API — WHOIS, DNS, SSL, Geolocation, Typosquatting, IP Intelligence, Domain Reputation, and bulk database downloads.  ## Authentication All requests require an &#x60;apiKey&#x60; query parameter.  ## Resources - Docs: https://whoisfreaks.com/documentation - Billing: https://billing.whoisfreaks.com - Support: support@whoisfreaks.com 
-    """,  # noqa: E501
+    long_description=(pathlib.Path(__file__).parent / "README.md").read_text(encoding="utf-8"),
     package_data={"whoisfreaks": ["py.typed"]},
 )

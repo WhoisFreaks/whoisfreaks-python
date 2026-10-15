@@ -47,7 +47,7 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 with whoisfreaks.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = whoisfreaks.DatabasesThreatFeedApi(api_client)
-    var_date = 'var_date_example' # str | Feed date (yyyy-MM-dd); defaults to latest available (optional)
+    var_date = '2026-10-01' # str | Feed date (yyyy-MM-dd); omit for the full dump of the feed (optional)
 
     try:
         # Download the daily malware threat feed (CSV)
@@ -65,7 +65,7 @@ with whoisfreaks.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **var_date** | **str**| Feed date (yyyy-MM-dd); defaults to latest available | [optional] 
+ **var_date** | **str**| Feed date (yyyy-MM-dd); omit for the full dump of the feed | [optional] 
 
 ### Return type
 
@@ -78,13 +78,14 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/octet-stream
+ - **Accept**: application/octet-stream, application/json
 
 ### HTTP response details
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Malware threat feed as CSV (domain,threat_type,confidence,first_seen,last_seen,No_of_threat_matched_pivots) |  -  |
+**4XX** | Error response (4XX) |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -150,13 +151,14 @@ This endpoint does not need any parameter.
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/octet-stream
+ - **Accept**: application/octet-stream, application/json
 
 ### HTTP response details
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Sample malware threat feed as CSV |  -  |
+**4XX** | Error response (4XX) |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -195,7 +197,7 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 with whoisfreaks.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = whoisfreaks.DatabasesThreatFeedApi(api_client)
-    var_date = 'var_date_example' # str | Feed date (yyyy-MM-dd); defaults to latest available (optional)
+    var_date = '2026-10-01' # str | Feed date (yyyy-MM-dd); omit for the full dump of the feed (optional)
 
     try:
         # Download the daily phishing threat feed (CSV)
@@ -213,7 +215,7 @@ with whoisfreaks.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **var_date** | **str**| Feed date (yyyy-MM-dd); defaults to latest available | [optional] 
+ **var_date** | **str**| Feed date (yyyy-MM-dd); omit for the full dump of the feed | [optional] 
 
 ### Return type
 
@@ -226,13 +228,14 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/octet-stream
+ - **Accept**: application/octet-stream, application/json
 
 ### HTTP response details
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Phishing threat feed as CSV (domain,threat_type,confidence,first_seen,last_seen,No_of_threat_matched_pivots) |  -  |
+**4XX** | Error response (4XX) |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -298,13 +301,14 @@ This endpoint does not need any parameter.
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/octet-stream
+ - **Accept**: application/octet-stream, application/json
 
 ### HTTP response details
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Sample phishing threat feed as CSV |  -  |
+**4XX** | Error response (4XX) |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -343,7 +347,7 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 with whoisfreaks.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = whoisfreaks.DatabasesThreatFeedApi(api_client)
-    var_date = 'var_date_example' # str | Feed date (yyyy-MM-dd); defaults to latest available (optional)
+    var_date = '2026-10-01' # str | Feed date (yyyy-MM-dd); omit for the full dump of the feed (optional)
 
     try:
         # Download the daily spam threat feed (CSV)
@@ -361,7 +365,7 @@ with whoisfreaks.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **var_date** | **str**| Feed date (yyyy-MM-dd); defaults to latest available | [optional] 
+ **var_date** | **str**| Feed date (yyyy-MM-dd); omit for the full dump of the feed | [optional] 
 
 ### Return type
 
@@ -374,13 +378,14 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/octet-stream
+ - **Accept**: application/octet-stream, application/json
 
 ### HTTP response details
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Spam threat feed as CSV (domain,threat_type,confidence,first_seen,last_seen,No_of_threat_matched_pivots) |  -  |
+**4XX** | Error response (4XX) |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -446,13 +451,14 @@ This endpoint does not need any parameter.
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/octet-stream
+ - **Accept**: application/octet-stream, application/json
 
 ### HTTP response details
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Sample spam threat feed as CSV |  -  |
+**4XX** | Error response (4XX) |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

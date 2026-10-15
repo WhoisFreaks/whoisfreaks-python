@@ -127,7 +127,7 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 with whoisfreaks.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = whoisfreaks.GeolocationApi(api_client)
-    ip = 'ip_example' # str | 
+    ip = '8.8.8.8' # str | 
 
     try:
         # IP Geolocation Lookup

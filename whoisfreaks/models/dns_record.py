@@ -3,7 +3,7 @@
 """
     WhoisFreaks API
 
-    Complete WhoisFreaks API — WHOIS, DNS, SSL, Geolocation, Typosquatting, IP Intelligence, Domain Reputation, and bulk database downloads.  ## Authentication All requests require an `apiKey` query parameter.  ## Resources - Docs: https://whoisfreaks.com/documentation - Billing: https://billing.whoisfreaks.com - Support: support@whoisfreaks.com 
+    Complete WhoisFreaks API: WHOIS, DNS, SSL, Geolocation, Typosquatting, IP Intelligence, Domain Reputation, and bulk database downloads.  ## Authentication All requests require an `apiKey` query parameter.  ## Resources - Docs: https://whoisfreaks.com/documentation - Billing: https://billing.whoisfreaks.com - Support: support@whoisfreaks.com 
 
     The version of the OpenAPI document: 1.0.0
     Contact: support@whoisfreaks.com
@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, StrictInt, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
@@ -27,9 +27,13 @@ class DnsRecord(BaseModel):
     """
     Union of all DNS record variants (A/AAAA/MX/NS/CNAME/PTR/TXT/SPF/SOA).
     """ # noqa: E501
-    type: Optional[StrictStr] = None
+    type: Optional[StrictInt] = Field(default=None, description="Numeric DNS record type: 1 A, 2 NS, 5 CNAME, 6 SOA, 12 PTR, 15 MX, 16 TXT, 28 AAAA, 99 SPF.")
+    dns_type: Optional[StrictStr] = Field(default=None, description="Record type name, e.g. A, MX, TXT", alias="dnsType")
     name: Optional[StrictStr] = None
     ttl: Optional[StrictInt] = None
+    raw_text: Optional[StrictStr] = Field(default=None, description="The record in zone-file format", alias="rawText")
+    r_rset_type: Optional[StrictInt] = Field(default=None, alias="rRsetType")
+    single_name: Optional[StrictStr] = Field(default=None, description="Target host for NS, CNAME and PTR records", alias="singleName")
     address: Optional[StrictStr] = None
     priority: Optional[StrictInt] = None
     exchange: Optional[StrictStr] = None
@@ -37,13 +41,13 @@ class DnsRecord(BaseModel):
     strings: Optional[List[StrictStr]] = None
     host: Optional[StrictStr] = None
     admin: Optional[StrictStr] = None
-    serial: Optional[StrictInt] = None
+    serial: Optional[StrictInt] = Field(default=None, description="SOA serial; values above 2^31 are common, so it is 64-bit")
     refresh: Optional[StrictInt] = None
     retry: Optional[StrictInt] = None
     expire: Optional[StrictInt] = None
     minimum: Optional[StrictInt] = None
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["type", "name", "ttl", "address", "priority", "exchange", "target", "strings", "host", "admin", "serial", "refresh", "retry", "expire", "minimum"]
+    __properties: ClassVar[List[str]] = ["type", "dnsType", "name", "ttl", "rawText", "rRsetType", "singleName", "address", "priority", "exchange", "target", "strings", "host", "admin", "serial", "refresh", "retry", "expire", "minimum"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -104,8 +108,12 @@ class DnsRecord(BaseModel):
 
         _obj = cls.model_validate({
             "type": obj.get("type"),
+            "dnsType": obj.get("dnsType"),
             "name": obj.get("name"),
             "ttl": obj.get("ttl"),
+            "rawText": obj.get("rawText"),
+            "rRsetType": obj.get("rRsetType"),
+            "singleName": obj.get("singleName"),
             "address": obj.get("address"),
             "priority": obj.get("priority"),
             "exchange": obj.get("exchange"),

@@ -3,7 +3,7 @@
 """
     WhoisFreaks API
 
-    Complete WhoisFreaks API — WHOIS, DNS, SSL, Geolocation, Typosquatting, IP Intelligence, Domain Reputation, and bulk database downloads.  ## Authentication All requests require an `apiKey` query parameter.  ## Resources - Docs: https://whoisfreaks.com/documentation - Billing: https://billing.whoisfreaks.com - Support: support@whoisfreaks.com 
+    Complete WhoisFreaks API: WHOIS, DNS, SSL, Geolocation, Typosquatting, IP Intelligence, Domain Reputation, and bulk database downloads.  ## Authentication All requests require an `apiKey` query parameter.  ## Resources - Docs: https://whoisfreaks.com/documentation - Billing: https://billing.whoisfreaks.com - Support: support@whoisfreaks.com 
 
     The version of the OpenAPI document: 1.0.0
     Contact: support@whoisfreaks.com
@@ -20,18 +20,43 @@ import json
 
 from pydantic import BaseModel, ConfigDict, StrictBool, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
+from whoisfreaks.models.eligibility_info import EligibilityInfo
+from whoisfreaks.models.personal_information import PersonalInformation
+from whoisfreaks.models.registrar_information import RegistrarInformation
+from whoisfreaks.models.registry_data import RegistryData
+from whoisfreaks.models.reseller_contact import ResellerContact
 from typing import Optional, Set
 from typing_extensions import Self
 
 class BulkWhoisItem(BaseModel):
     """
-    One bulk WHOIS result; success items also carry all WhoisResponse fields.
+    One bulk WHOIS result. Successful items carry the same fields as a live WHOIS lookup.
     """ # noqa: E501
     status: Optional[StrictBool] = None
     domain_name: Optional[StrictStr] = None
     error: Optional[StrictStr] = None
+    query_time: Optional[StrictStr] = None
+    whois_server: Optional[StrictStr] = None
+    domain_registered: Optional[StrictStr] = None
+    secure_dns: Optional[StrictBool] = None
+    domain_handle: Optional[StrictStr] = None
+    create_date: Optional[StrictStr] = None
+    update_date: Optional[StrictStr] = None
+    expiry_date: Optional[StrictStr] = None
+    domain_registrar: Optional[RegistrarInformation] = None
+    reseller_contact: Optional[ResellerContact] = None
+    registrant_contact: Optional[PersonalInformation] = None
+    administrative_contact: Optional[PersonalInformation] = None
+    technical_contact: Optional[PersonalInformation] = None
+    billing_contact: Optional[PersonalInformation] = None
+    eligibility_info: Optional[EligibilityInfo] = None
+    abuse_contact: Optional[RegistrarInformation] = None
+    name_servers: Optional[List[StrictStr]] = None
+    domain_status: Optional[List[StrictStr]] = None
+    whois_raw_domain: Optional[StrictStr] = None
+    registry_data: Optional[RegistryData] = None
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["status", "domain_name", "error"]
+    __properties: ClassVar[List[str]] = ["status", "domain_name", "error", "query_time", "whois_server", "domain_registered", "secure_dns", "domain_handle", "create_date", "update_date", "expiry_date", "domain_registrar", "reseller_contact", "registrant_contact", "administrative_contact", "technical_contact", "billing_contact", "eligibility_info", "abuse_contact", "name_servers", "domain_status", "whois_raw_domain", "registry_data"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -74,6 +99,33 @@ class BulkWhoisItem(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of domain_registrar
+        if self.domain_registrar:
+            _dict['domain_registrar'] = self.domain_registrar.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of reseller_contact
+        if self.reseller_contact:
+            _dict['reseller_contact'] = self.reseller_contact.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of registrant_contact
+        if self.registrant_contact:
+            _dict['registrant_contact'] = self.registrant_contact.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of administrative_contact
+        if self.administrative_contact:
+            _dict['administrative_contact'] = self.administrative_contact.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of technical_contact
+        if self.technical_contact:
+            _dict['technical_contact'] = self.technical_contact.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of billing_contact
+        if self.billing_contact:
+            _dict['billing_contact'] = self.billing_contact.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of eligibility_info
+        if self.eligibility_info:
+            _dict['eligibility_info'] = self.eligibility_info.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of abuse_contact
+        if self.abuse_contact:
+            _dict['abuse_contact'] = self.abuse_contact.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of registry_data
+        if self.registry_data:
+            _dict['registry_data'] = self.registry_data.to_dict()
         # puts key-value pairs in additional_properties in the top level
         if self.additional_properties is not None:
             for _key, _value in self.additional_properties.items():
@@ -93,7 +145,27 @@ class BulkWhoisItem(BaseModel):
         _obj = cls.model_validate({
             "status": obj.get("status"),
             "domain_name": obj.get("domain_name"),
-            "error": obj.get("error")
+            "error": obj.get("error"),
+            "query_time": obj.get("query_time"),
+            "whois_server": obj.get("whois_server"),
+            "domain_registered": obj.get("domain_registered"),
+            "secure_dns": obj.get("secure_dns"),
+            "domain_handle": obj.get("domain_handle"),
+            "create_date": obj.get("create_date"),
+            "update_date": obj.get("update_date"),
+            "expiry_date": obj.get("expiry_date"),
+            "domain_registrar": RegistrarInformation.from_dict(obj["domain_registrar"]) if obj.get("domain_registrar") is not None else None,
+            "reseller_contact": ResellerContact.from_dict(obj["reseller_contact"]) if obj.get("reseller_contact") is not None else None,
+            "registrant_contact": PersonalInformation.from_dict(obj["registrant_contact"]) if obj.get("registrant_contact") is not None else None,
+            "administrative_contact": PersonalInformation.from_dict(obj["administrative_contact"]) if obj.get("administrative_contact") is not None else None,
+            "technical_contact": PersonalInformation.from_dict(obj["technical_contact"]) if obj.get("technical_contact") is not None else None,
+            "billing_contact": PersonalInformation.from_dict(obj["billing_contact"]) if obj.get("billing_contact") is not None else None,
+            "eligibility_info": EligibilityInfo.from_dict(obj["eligibility_info"]) if obj.get("eligibility_info") is not None else None,
+            "abuse_contact": RegistrarInformation.from_dict(obj["abuse_contact"]) if obj.get("abuse_contact") is not None else None,
+            "name_servers": obj.get("name_servers"),
+            "domain_status": obj.get("domain_status"),
+            "whois_raw_domain": obj.get("whois_raw_domain"),
+            "registry_data": RegistryData.from_dict(obj["registry_data"]) if obj.get("registry_data") is not None else None
         })
         # store additional fields in additional_properties
         for _key in obj.keys():

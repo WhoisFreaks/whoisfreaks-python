@@ -45,9 +45,9 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 with whoisfreaks.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = whoisfreaks.SubdomainsApi(api_client)
-    domain = 'domain_example' # str | 
-    after = '2013-10-20' # date |  (optional)
-    before = '2013-10-20' # date |  (optional)
+    domain = 'whoisfreaks.com' # str | 
+    after = '2026-01-01' # date |  (optional)
+    before = '2026-10-01' # date |  (optional)
     status = 'status_example' # str |  (optional)
     page = 1 # int |  (optional) (default to 1)
     format = json # str |  (optional) (default to json)

@@ -3,7 +3,7 @@
 """
     WhoisFreaks API
 
-    Complete WhoisFreaks API — WHOIS, DNS, SSL, Geolocation, Typosquatting, IP Intelligence, Domain Reputation, and bulk database downloads.  ## Authentication All requests require an `apiKey` query parameter.  ## Resources - Docs: https://whoisfreaks.com/documentation - Billing: https://billing.whoisfreaks.com - Support: support@whoisfreaks.com 
+    Complete WhoisFreaks API: WHOIS, DNS, SSL, Geolocation, Typosquatting, IP Intelligence, Domain Reputation, and bulk database downloads.  ## Authentication All requests require an `apiKey` query parameter.  ## Resources - Docs: https://whoisfreaks.com/documentation - Billing: https://billing.whoisfreaks.com - Support: support@whoisfreaks.com 
 
     The version of the OpenAPI document: 1.0.0
     Contact: support@whoisfreaks.com
@@ -42,7 +42,7 @@ class DatabasesThreatFeedApi:
     @validate_call
     def download_threat_feed_malware(
         self,
-        var_date: Annotated[Optional[StrictStr], Field(description="Feed date (yyyy-MM-dd); defaults to latest available")] = None,
+        var_date: Annotated[Optional[StrictStr], Field(description="Feed date (yyyy-MM-dd); omit for the full dump of the feed")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -54,12 +54,12 @@ class DatabasesThreatFeedApi:
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=1)] = 0,
     ) -> bytearray:
         """Download the daily malware threat feed (CSV)
 
 
-        :param var_date: Feed date (yyyy-MM-dd); defaults to latest available
+        :param var_date: Feed date (yyyy-MM-dd); omit for the full dump of the feed
         :type var_date: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -93,6 +93,7 @@ class DatabasesThreatFeedApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "bytearray",
+            '4XX': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -108,7 +109,7 @@ class DatabasesThreatFeedApi:
     @validate_call
     def download_threat_feed_malware_with_http_info(
         self,
-        var_date: Annotated[Optional[StrictStr], Field(description="Feed date (yyyy-MM-dd); defaults to latest available")] = None,
+        var_date: Annotated[Optional[StrictStr], Field(description="Feed date (yyyy-MM-dd); omit for the full dump of the feed")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -120,12 +121,12 @@ class DatabasesThreatFeedApi:
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=1)] = 0,
     ) -> ApiResponse[bytearray]:
         """Download the daily malware threat feed (CSV)
 
 
-        :param var_date: Feed date (yyyy-MM-dd); defaults to latest available
+        :param var_date: Feed date (yyyy-MM-dd); omit for the full dump of the feed
         :type var_date: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -159,6 +160,7 @@ class DatabasesThreatFeedApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "bytearray",
+            '4XX': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -174,7 +176,7 @@ class DatabasesThreatFeedApi:
     @validate_call
     def download_threat_feed_malware_without_preload_content(
         self,
-        var_date: Annotated[Optional[StrictStr], Field(description="Feed date (yyyy-MM-dd); defaults to latest available")] = None,
+        var_date: Annotated[Optional[StrictStr], Field(description="Feed date (yyyy-MM-dd); omit for the full dump of the feed")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -186,12 +188,12 @@ class DatabasesThreatFeedApi:
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=1)] = 0,
     ) -> RESTResponseType:
         """Download the daily malware threat feed (CSV)
 
 
-        :param var_date: Feed date (yyyy-MM-dd); defaults to latest available
+        :param var_date: Feed date (yyyy-MM-dd); omit for the full dump of the feed
         :type var_date: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -225,6 +227,7 @@ class DatabasesThreatFeedApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "bytearray",
+            '4XX': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -242,7 +245,10 @@ class DatabasesThreatFeedApi:
         _host_index,
     ) -> RequestSerialized:
 
-        _host = None
+        _hosts = [
+            'https://files.whoisfreaks.com'
+        ]
+        _host = _hosts[_host_index]
 
         _collection_formats: Dict[str, str] = {
         }
@@ -271,7 +277,8 @@ class DatabasesThreatFeedApi:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    'application/octet-stream'
+                    'application/octet-stream', 
+                    'application/json'
                 ]
             )
 
@@ -313,7 +320,7 @@ class DatabasesThreatFeedApi:
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=1)] = 0,
     ) -> bytearray:
         """Download a sample of the malware threat feed (CSV)
 
@@ -349,6 +356,7 @@ class DatabasesThreatFeedApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "bytearray",
+            '4XX': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -375,7 +383,7 @@ class DatabasesThreatFeedApi:
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=1)] = 0,
     ) -> ApiResponse[bytearray]:
         """Download a sample of the malware threat feed (CSV)
 
@@ -411,6 +419,7 @@ class DatabasesThreatFeedApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "bytearray",
+            '4XX': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -437,7 +446,7 @@ class DatabasesThreatFeedApi:
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=1)] = 0,
     ) -> RESTResponseType:
         """Download a sample of the malware threat feed (CSV)
 
@@ -473,6 +482,7 @@ class DatabasesThreatFeedApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "bytearray",
+            '4XX': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -489,7 +499,10 @@ class DatabasesThreatFeedApi:
         _host_index,
     ) -> RequestSerialized:
 
-        _host = None
+        _hosts = [
+            'https://files.whoisfreaks.com'
+        ]
+        _host = _hosts[_host_index]
 
         _collection_formats: Dict[str, str] = {
         }
@@ -514,7 +527,8 @@ class DatabasesThreatFeedApi:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    'application/octet-stream'
+                    'application/octet-stream', 
+                    'application/json'
                 ]
             )
 
@@ -545,7 +559,7 @@ class DatabasesThreatFeedApi:
     @validate_call
     def download_threat_feed_phishing(
         self,
-        var_date: Annotated[Optional[StrictStr], Field(description="Feed date (yyyy-MM-dd); defaults to latest available")] = None,
+        var_date: Annotated[Optional[StrictStr], Field(description="Feed date (yyyy-MM-dd); omit for the full dump of the feed")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -557,12 +571,12 @@ class DatabasesThreatFeedApi:
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=1)] = 0,
     ) -> bytearray:
         """Download the daily phishing threat feed (CSV)
 
 
-        :param var_date: Feed date (yyyy-MM-dd); defaults to latest available
+        :param var_date: Feed date (yyyy-MM-dd); omit for the full dump of the feed
         :type var_date: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -596,6 +610,7 @@ class DatabasesThreatFeedApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "bytearray",
+            '4XX': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -611,7 +626,7 @@ class DatabasesThreatFeedApi:
     @validate_call
     def download_threat_feed_phishing_with_http_info(
         self,
-        var_date: Annotated[Optional[StrictStr], Field(description="Feed date (yyyy-MM-dd); defaults to latest available")] = None,
+        var_date: Annotated[Optional[StrictStr], Field(description="Feed date (yyyy-MM-dd); omit for the full dump of the feed")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -623,12 +638,12 @@ class DatabasesThreatFeedApi:
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=1)] = 0,
     ) -> ApiResponse[bytearray]:
         """Download the daily phishing threat feed (CSV)
 
 
-        :param var_date: Feed date (yyyy-MM-dd); defaults to latest available
+        :param var_date: Feed date (yyyy-MM-dd); omit for the full dump of the feed
         :type var_date: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -662,6 +677,7 @@ class DatabasesThreatFeedApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "bytearray",
+            '4XX': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -677,7 +693,7 @@ class DatabasesThreatFeedApi:
     @validate_call
     def download_threat_feed_phishing_without_preload_content(
         self,
-        var_date: Annotated[Optional[StrictStr], Field(description="Feed date (yyyy-MM-dd); defaults to latest available")] = None,
+        var_date: Annotated[Optional[StrictStr], Field(description="Feed date (yyyy-MM-dd); omit for the full dump of the feed")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -689,12 +705,12 @@ class DatabasesThreatFeedApi:
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=1)] = 0,
     ) -> RESTResponseType:
         """Download the daily phishing threat feed (CSV)
 
 
-        :param var_date: Feed date (yyyy-MM-dd); defaults to latest available
+        :param var_date: Feed date (yyyy-MM-dd); omit for the full dump of the feed
         :type var_date: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -728,6 +744,7 @@ class DatabasesThreatFeedApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "bytearray",
+            '4XX': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -745,7 +762,10 @@ class DatabasesThreatFeedApi:
         _host_index,
     ) -> RequestSerialized:
 
-        _host = None
+        _hosts = [
+            'https://files.whoisfreaks.com'
+        ]
+        _host = _hosts[_host_index]
 
         _collection_formats: Dict[str, str] = {
         }
@@ -774,7 +794,8 @@ class DatabasesThreatFeedApi:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    'application/octet-stream'
+                    'application/octet-stream', 
+                    'application/json'
                 ]
             )
 
@@ -816,7 +837,7 @@ class DatabasesThreatFeedApi:
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=1)] = 0,
     ) -> bytearray:
         """Download a sample of the phishing threat feed (CSV)
 
@@ -852,6 +873,7 @@ class DatabasesThreatFeedApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "bytearray",
+            '4XX': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -878,7 +900,7 @@ class DatabasesThreatFeedApi:
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=1)] = 0,
     ) -> ApiResponse[bytearray]:
         """Download a sample of the phishing threat feed (CSV)
 
@@ -914,6 +936,7 @@ class DatabasesThreatFeedApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "bytearray",
+            '4XX': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -940,7 +963,7 @@ class DatabasesThreatFeedApi:
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=1)] = 0,
     ) -> RESTResponseType:
         """Download a sample of the phishing threat feed (CSV)
 
@@ -976,6 +999,7 @@ class DatabasesThreatFeedApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "bytearray",
+            '4XX': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -992,7 +1016,10 @@ class DatabasesThreatFeedApi:
         _host_index,
     ) -> RequestSerialized:
 
-        _host = None
+        _hosts = [
+            'https://files.whoisfreaks.com'
+        ]
+        _host = _hosts[_host_index]
 
         _collection_formats: Dict[str, str] = {
         }
@@ -1017,7 +1044,8 @@ class DatabasesThreatFeedApi:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    'application/octet-stream'
+                    'application/octet-stream', 
+                    'application/json'
                 ]
             )
 
@@ -1048,7 +1076,7 @@ class DatabasesThreatFeedApi:
     @validate_call
     def download_threat_feed_spam(
         self,
-        var_date: Annotated[Optional[StrictStr], Field(description="Feed date (yyyy-MM-dd); defaults to latest available")] = None,
+        var_date: Annotated[Optional[StrictStr], Field(description="Feed date (yyyy-MM-dd); omit for the full dump of the feed")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1060,12 +1088,12 @@ class DatabasesThreatFeedApi:
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=1)] = 0,
     ) -> bytearray:
         """Download the daily spam threat feed (CSV)
 
 
-        :param var_date: Feed date (yyyy-MM-dd); defaults to latest available
+        :param var_date: Feed date (yyyy-MM-dd); omit for the full dump of the feed
         :type var_date: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1099,6 +1127,7 @@ class DatabasesThreatFeedApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "bytearray",
+            '4XX': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1114,7 +1143,7 @@ class DatabasesThreatFeedApi:
     @validate_call
     def download_threat_feed_spam_with_http_info(
         self,
-        var_date: Annotated[Optional[StrictStr], Field(description="Feed date (yyyy-MM-dd); defaults to latest available")] = None,
+        var_date: Annotated[Optional[StrictStr], Field(description="Feed date (yyyy-MM-dd); omit for the full dump of the feed")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1126,12 +1155,12 @@ class DatabasesThreatFeedApi:
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=1)] = 0,
     ) -> ApiResponse[bytearray]:
         """Download the daily spam threat feed (CSV)
 
 
-        :param var_date: Feed date (yyyy-MM-dd); defaults to latest available
+        :param var_date: Feed date (yyyy-MM-dd); omit for the full dump of the feed
         :type var_date: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1165,6 +1194,7 @@ class DatabasesThreatFeedApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "bytearray",
+            '4XX': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1180,7 +1210,7 @@ class DatabasesThreatFeedApi:
     @validate_call
     def download_threat_feed_spam_without_preload_content(
         self,
-        var_date: Annotated[Optional[StrictStr], Field(description="Feed date (yyyy-MM-dd); defaults to latest available")] = None,
+        var_date: Annotated[Optional[StrictStr], Field(description="Feed date (yyyy-MM-dd); omit for the full dump of the feed")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1192,12 +1222,12 @@ class DatabasesThreatFeedApi:
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=1)] = 0,
     ) -> RESTResponseType:
         """Download the daily spam threat feed (CSV)
 
 
-        :param var_date: Feed date (yyyy-MM-dd); defaults to latest available
+        :param var_date: Feed date (yyyy-MM-dd); omit for the full dump of the feed
         :type var_date: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1231,6 +1261,7 @@ class DatabasesThreatFeedApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "bytearray",
+            '4XX': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1248,7 +1279,10 @@ class DatabasesThreatFeedApi:
         _host_index,
     ) -> RequestSerialized:
 
-        _host = None
+        _hosts = [
+            'https://files.whoisfreaks.com'
+        ]
+        _host = _hosts[_host_index]
 
         _collection_formats: Dict[str, str] = {
         }
@@ -1277,7 +1311,8 @@ class DatabasesThreatFeedApi:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    'application/octet-stream'
+                    'application/octet-stream', 
+                    'application/json'
                 ]
             )
 
@@ -1319,7 +1354,7 @@ class DatabasesThreatFeedApi:
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=1)] = 0,
     ) -> bytearray:
         """Download a sample of the spam threat feed (CSV)
 
@@ -1355,6 +1390,7 @@ class DatabasesThreatFeedApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "bytearray",
+            '4XX': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1381,7 +1417,7 @@ class DatabasesThreatFeedApi:
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=1)] = 0,
     ) -> ApiResponse[bytearray]:
         """Download a sample of the spam threat feed (CSV)
 
@@ -1417,6 +1453,7 @@ class DatabasesThreatFeedApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "bytearray",
+            '4XX': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1443,7 +1480,7 @@ class DatabasesThreatFeedApi:
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=1)] = 0,
     ) -> RESTResponseType:
         """Download a sample of the spam threat feed (CSV)
 
@@ -1479,6 +1516,7 @@ class DatabasesThreatFeedApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "bytearray",
+            '4XX': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1495,7 +1533,10 @@ class DatabasesThreatFeedApi:
         _host_index,
     ) -> RequestSerialized:
 
-        _host = None
+        _hosts = [
+            'https://files.whoisfreaks.com'
+        ]
+        _host = _hosts[_host_index]
 
         _collection_formats: Dict[str, str] = {
         }
@@ -1520,7 +1561,8 @@ class DatabasesThreatFeedApi:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    'application/octet-stream'
+                    'application/octet-stream', 
+                    'application/json'
                 ]
             )
 

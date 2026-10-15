@@ -94,7 +94,7 @@ Name | Type | Description  | Notes
 
 IP Reputation Lookup
 
-Threat intel for IP — VPN, proxy, Tor, bots. 1 credit.
+Threat intel for IP: VPN, proxy, Tor, bots. 1 credit.
 
 ### Example
 
@@ -127,7 +127,7 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 with whoisfreaks.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = whoisfreaks.IPReputationApi(api_client)
-    ip = 'ip_example' # str | 
+    ip = '8.8.8.8' # str | 
 
     try:
         # IP Reputation Lookup

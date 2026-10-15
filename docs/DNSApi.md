@@ -133,7 +133,7 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 with whoisfreaks.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = whoisfreaks.DNSApi(api_client)
-    domain_name = 'domain_name_example' # str | 
+    domain_name = 'whoisfreaks.com' # str | 
     type = 'all' # str |  (default to 'all')
     page = 1 # int |  (optional) (default to 1)
     format = json # str |  (optional) (default to json)
@@ -220,8 +220,8 @@ with whoisfreaks.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = whoisfreaks.DNSApi(api_client)
     type = 'all' # str | all or comma-separated: A,MX,NS,TXT,SOA,SPF,AAAA,CNAME (default to 'all')
-    domain_name = 'domain_name_example' # str |  (optional)
-    ip_address = 'ip_address_example' # str | Use for PTR lookups (optional)
+    domain_name = 'whoisfreaks.com' # str |  (optional)
+    ip_address = '8.8.8.8' # str | Use for PTR lookups (optional)
     format = json # str |  (optional) (default to json)
 
     try:
@@ -306,7 +306,7 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 with whoisfreaks.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = whoisfreaks.DNSApi(api_client)
-    value = 'value_example' # str | IP, CIDR, or record value
+    value = '8.8.8.8' # str | IP, CIDR, or record value
     type = 'type_example' # str | 
     exact = True # bool |  (optional) (default to True)
     page = 1 # int |  (optional) (default to 1)

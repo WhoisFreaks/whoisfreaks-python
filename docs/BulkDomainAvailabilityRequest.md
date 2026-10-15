@@ -6,8 +6,8 @@ Request body for POST /v2.0/domain/availability. Use domainNames OR tld.
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**domain_names** | **List[str]** | Mode 1 — list of full domain names. Cannot be used with tld. | [optional] 
-**tld** | **List[str]** | Mode 2 — TLDs to check against the domain query param. Cannot be used with domainNames. | [optional] 
+**domain_names** | **List[str]** | Mode 1: list of full domain names. Cannot be used with tld. | [optional] 
+**tld** | **List[str]** | Mode 2: TLDs to check against the domain query param. Cannot be used with domainNames. | [optional] 
 
 ## Example
 

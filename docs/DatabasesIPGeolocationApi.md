@@ -47,7 +47,7 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 with whoisfreaks.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = whoisfreaks.DatabasesIPGeolocationApi(api_client)
-    var_date = '2013-10-20' # date | 
+    var_date = '2026-10-01' # date | 
 
     try:
         # IP to City Snapshot
@@ -202,7 +202,7 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 with whoisfreaks.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = whoisfreaks.DatabasesIPGeolocationApi(api_client)
-    var_date = '2013-10-20' # date | 
+    var_date = '2026-10-01' # date | 
 
     try:
         # IP to Country Snapshot

@@ -3,7 +3,7 @@
 """
     WhoisFreaks API
 
-    Complete WhoisFreaks API — WHOIS, DNS, SSL, Geolocation, Typosquatting, IP Intelligence, Domain Reputation, and bulk database downloads.  ## Authentication All requests require an `apiKey` query parameter.  ## Resources - Docs: https://whoisfreaks.com/documentation - Billing: https://billing.whoisfreaks.com - Support: support@whoisfreaks.com 
+    Complete WhoisFreaks API: WHOIS, DNS, SSL, Geolocation, Typosquatting, IP Intelligence, Domain Reputation, and bulk database downloads.  ## Authentication All requests require an `apiKey` query parameter.  ## Resources - Docs: https://whoisfreaks.com/documentation - Billing: https://billing.whoisfreaks.com - Support: support@whoisfreaks.com 
 
     The version of the OpenAPI document: 1.0.0
     Contact: support@whoisfreaks.com
@@ -26,14 +26,14 @@ from typing_extensions import Self
 
 class ReverseWhoisResponse(BaseModel):
     """
-    Reverse WHOIS response. Pagination keys are capitalized (Total_Result/Total_Pages/Current_Page) as returned by the API.
+    Reverse WHOIS response. Pagination keys (total_Result, total_Pages, current_Page) are spelled as the API returns them.
     """ # noqa: E501
-    total_result: Optional[StrictInt] = Field(default=None, alias="Total_Result")
-    total_pages: Optional[StrictInt] = Field(default=None, alias="Total_Pages")
-    current_page: Optional[StrictInt] = Field(default=None, alias="Current_Page")
+    total_result: Optional[StrictInt] = Field(default=None, alias="total_Result")
+    total_pages: Optional[StrictInt] = Field(default=None, alias="total_Pages")
+    current_page: Optional[StrictInt] = Field(default=None, alias="current_Page")
     whois_domains_historical: Optional[List[WhoisHistoricalItem]] = None
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["Total_Result", "Total_Pages", "Current_Page", "whois_domains_historical"]
+    __properties: ClassVar[List[str]] = ["total_Result", "total_Pages", "current_Page", "whois_domains_historical"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -100,9 +100,9 @@ class ReverseWhoisResponse(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "Total_Result": obj.get("Total_Result"),
-            "Total_Pages": obj.get("Total_Pages"),
-            "Current_Page": obj.get("Current_Page"),
+            "total_Result": obj.get("total_Result"),
+            "total_Pages": obj.get("total_Pages"),
+            "current_Page": obj.get("current_Page"),
             "whois_domains_historical": [WhoisHistoricalItem.from_dict(_item) for _item in obj["whois_domains_historical"]] if obj.get("whois_domains_historical") is not None else None
         })
         # store additional fields in additional_properties

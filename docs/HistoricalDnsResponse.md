@@ -1,15 +1,14 @@
 # HistoricalDnsResponse
 
-Note: 'currenPage' spelling matches the API.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **total_pages** | **int** |  | [optional] 
-**curren_page** | **int** |  | [optional] 
+**current_page** | **int** |  | [optional] 
 **total_records** | **int** |  | [optional] 
-**historical_dns** | [**List[DnsResponse]**](DnsResponse.md) |  | [optional] 
+**historical_dns_records** | [**List[DnsResponse]**](DnsResponse.md) |  | [optional] 
 
 ## Example
 

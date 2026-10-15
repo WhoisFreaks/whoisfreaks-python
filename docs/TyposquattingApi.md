@@ -45,8 +45,8 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 with whoisfreaks.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = whoisfreaks.TyposquattingApi(api_client)
-    keyword = 'keyword_example' # str |  (optional)
-    pattern = 'pattern_example' # str |  (optional)
+    keyword = 'whoisfreaks' # str |  (optional)
+    pattern = 'whois*' # str |  (optional)
     page_token = 'page_token_example' # str |  (optional)
 
     try:

@@ -50,9 +50,9 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 with whoisfreaks.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = whoisfreaks.DatabasesNewlyRegisteredApi(api_client)
-    whois = True # bool | 
-    var_date = '2013-10-20' # date | yyyy-MM-dd; omit for latest (optional)
-    tlds = 'tlds_example' # str |  (optional)
+    whois = true # bool | 
+    var_date = '2026-10-01' # date | yyyy-MM-dd; omit for latest (optional)
+    tlds = 'com,net' # str |  (optional)
 
     try:
         # Newly Registered ccTLD (CSV)
@@ -133,7 +133,7 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 with whoisfreaks.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = whoisfreaks.DatabasesNewlyRegisteredApi(api_client)
-    var_date = '2013-10-20' # date | yyyy-MM-dd; omit for latest (optional)
+    var_date = '2026-10-01' # date | yyyy-MM-dd; omit for latest (optional)
 
     try:
         # Newly Registered ccTLD Cleaned WHOIS (CSV)
@@ -212,8 +212,8 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 with whoisfreaks.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = whoisfreaks.DatabasesNewlyRegisteredApi(api_client)
-    var_date = '2013-10-20' # date | yyyy-MM-dd; omit for latest (optional)
-    tlds = 'tlds_example' # str |  (optional)
+    var_date = '2026-10-01' # date | yyyy-MM-dd; omit for latest (optional)
+    tlds = 'com,net' # str |  (optional)
 
     try:
         # Newly Registered ccTLD (JSON)
@@ -293,7 +293,7 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 with whoisfreaks.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = whoisfreaks.DatabasesNewlyRegisteredApi(api_client)
-    var_date = '2013-10-20' # date | yyyy-MM-dd; omit for latest (optional)
+    var_date = '2026-10-01' # date | yyyy-MM-dd; omit for latest (optional)
 
     try:
         # Newly Registered With DNS
@@ -372,9 +372,9 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 with whoisfreaks.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = whoisfreaks.DatabasesNewlyRegisteredApi(api_client)
-    whois = True # bool | 
-    var_date = '2013-10-20' # date | yyyy-MM-dd; omit for latest (optional)
-    tlds = 'tlds_example' # str |  (optional)
+    whois = true # bool | 
+    var_date = '2026-10-01' # date | yyyy-MM-dd; omit for latest (optional)
+    tlds = 'com,net' # str |  (optional)
 
     try:
         # Newly Registered gTLD (CSV)
@@ -455,7 +455,7 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 with whoisfreaks.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = whoisfreaks.DatabasesNewlyRegisteredApi(api_client)
-    var_date = '2013-10-20' # date | yyyy-MM-dd; omit for latest (optional)
+    var_date = '2026-10-01' # date | yyyy-MM-dd; omit for latest (optional)
 
     try:
         # Newly Registered gTLD Cleaned WHOIS (CSV)
@@ -534,8 +534,8 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 with whoisfreaks.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = whoisfreaks.DatabasesNewlyRegisteredApi(api_client)
-    var_date = '2013-10-20' # date | yyyy-MM-dd; omit for latest (optional)
-    tlds = 'tlds_example' # str |  (optional)
+    var_date = '2026-10-01' # date | yyyy-MM-dd; omit for latest (optional)
+    tlds = 'com,net' # str |  (optional)
 
     try:
         # Newly Registered gTLD (JSON)

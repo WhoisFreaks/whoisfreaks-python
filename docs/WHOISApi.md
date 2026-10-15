@@ -94,9 +94,11 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **whois_history**
-> WhoisHistoricalResponse whois_history(domain_name, page=page, format=format)
+> WhoisHistoricalResponse whois_history(domain_name, format=format)
 
 Historical WHOIS records for a domain
+
+Every WHOIS record captured for the domain since 1986, in one response (no pagination). Cost 2 credits.
 
 ### Example
 
@@ -129,13 +131,12 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 with whoisfreaks.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = whoisfreaks.WHOISApi(api_client)
-    domain_name = 'domain_name_example' # str | Domain to fetch historical WHOIS records for
-    page = 56 # int | Page number (optional)
+    domain_name = 'whoisfreaks.com' # str | Domain to fetch historical WHOIS records for
     format = 'format_example' # str |  (optional)
 
     try:
         # Historical WHOIS records for a domain
-        api_response = api_instance.whois_history(domain_name, page=page, format=format)
+        api_response = api_instance.whois_history(domain_name, format=format)
         print("The response of WHOISApi->whois_history:\n")
         pprint(api_response)
     except Exception as e:
@@ -150,7 +151,6 @@ with whoisfreaks.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **domain_name** | **str**| Domain to fetch historical WHOIS records for | 
- **page** | **int**| Page number | [optional] 
  **format** | **str**|  | [optional] 
 
 ### Return type
@@ -294,8 +294,8 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 with whoisfreaks.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = whoisfreaks.WHOISApi(api_client)
-    keyword = 'keyword_example' # str | Keyword to search across WHOIS records
-    page = 56 # int | Page number (optional)
+    keyword = 'whoisfreaks' # str | Keyword to search across WHOIS records
+    page = 1 # int | Page number (optional)
     format = 'format_example' # str |  (optional)
 
     try:

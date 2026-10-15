@@ -1,6 +1,6 @@
 # BulkWhoisItem
 
-One bulk WHOIS result; success items also carry all WhoisResponse fields.
+One bulk WHOIS result. Successful items carry the same fields as a live WHOIS lookup.
 
 ## Properties
 
@@ -9,6 +9,26 @@ Name | Type | Description | Notes
 **status** | **bool** |  | [optional] 
 **domain_name** | **str** |  | [optional] 
 **error** | **str** |  | [optional] 
+**query_time** | **str** |  | [optional] 
+**whois_server** | **str** |  | [optional] 
+**domain_registered** | **str** |  | [optional] 
+**secure_dns** | **bool** |  | [optional] 
+**domain_handle** | **str** |  | [optional] 
+**create_date** | **str** |  | [optional] 
+**update_date** | **str** |  | [optional] 
+**expiry_date** | **str** |  | [optional] 
+**domain_registrar** | [**RegistrarInformation**](RegistrarInformation.md) |  | [optional] 
+**reseller_contact** | [**ResellerContact**](ResellerContact.md) |  | [optional] 
+**registrant_contact** | [**PersonalInformation**](PersonalInformation.md) |  | [optional] 
+**administrative_contact** | [**PersonalInformation**](PersonalInformation.md) |  | [optional] 
+**technical_contact** | [**PersonalInformation**](PersonalInformation.md) |  | [optional] 
+**billing_contact** | [**PersonalInformation**](PersonalInformation.md) |  | [optional] 
+**eligibility_info** | [**EligibilityInfo**](EligibilityInfo.md) |  | [optional] 
+**abuse_contact** | [**RegistrarInformation**](RegistrarInformation.md) |  | [optional] 
+**name_servers** | **List[str]** |  | [optional] 
+**domain_status** | **List[str]** |  | [optional] 
+**whois_raw_domain** | **str** |  | [optional] 
+**registry_data** | [**RegistryData**](RegistryData.md) |  | [optional] 
 
 ## Example
 
