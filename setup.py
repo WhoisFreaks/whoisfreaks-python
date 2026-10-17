@@ -24,7 +24,7 @@ from setuptools import setup, find_packages  # noqa: H301
 # prerequisite: setuptools
 # http://pypi.python.org/pypi/setuptools
 NAME = "whoisfreaks"
-VERSION = "0.23.2"
+VERSION = "0.24.0"
 PYTHON_REQUIRES = ">= 3.8"
 REQUIRES = [
     "urllib3>=2.5.0, < 3.0.0",

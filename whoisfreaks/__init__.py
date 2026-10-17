@@ -15,7 +15,7 @@
 """  # noqa: E501
 
 
-__version__ = "0.23.2"
+__version__ = "0.24.0"
 
 # import apis into sdk package
 from whoisfreaks.api.asnwhois_api import ASNWHOISApi

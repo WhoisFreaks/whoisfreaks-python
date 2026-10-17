@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "whoisfreaks"
-version = "0.23.2"
+version = "0.24.0"
 description = "Python WHOIS API client: live, historical, reverse and bulk WHOIS, plus DNS, domain availability and typosquatting"
 authors = ["WhoisFreaks Support <support@whoisfreaks.com>"]
 license = "MIT"
